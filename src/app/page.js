@@ -1,7 +1,21 @@
 "use client"
 import CMHComponent from "./components/CMH";
+import { useState, useEffect } from "react"
 
 export default function Home() {
+
+  function save() {
+    let cellValues = [];
+    const cellIds = ['value11', 'value12', 'value21', 'value22'];
+    cellIds.forEach(id => {
+      const cellContent = document.getElementById(id).innerText;
+      cellValues.push(cellContent);
+    });
+      console.log(cellValues);
+  }
+
+  const [data, setData] = useState([[]])
+
   return (
    <>
    <div class="flex justify-center items-center mt-2">
@@ -20,33 +34,51 @@ export default function Home() {
     </h1>
 
 <div className="flex justify-center flex-row space-x-4">
-  {/* <button className="mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red hover:from-blue hover:to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden transition duration-300 transform hover:rotate-6">
-    <span className="absolute inset-0 bg-gradient-to-br from-blue to-red"></span>
-    <span className="relative z-10 font-Inter font-medium text-black">Upload Data.</span>
-  </button> */}
-  {/* Open the modal using document.getElementById('ID').showModal() method */}
-<button className="btn mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red hover:from-blue hover:to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden transition duration-300 transform hover:rotate-6 border-none" onClick={()=>document.getElementById('upload_modal').showModal()}>Upload Data.</button>
-<dialog id="upload_modal" className="modal ">
-  <div className="modal-box bg-white flex justify-center flex-col font-Inter">
-    <h3 className="font-bold text-lg justify-center flex">Upload CSV.</h3>
-    <img className="object-cover" src="/images/examplecsv.png" alt="Sample Image"></img>
-    <p className="py-4 text-sm">Note: Please ensure your CSV is formatted like the example above.</p>
-    <input type="file" className="file-input file-input-grey file-input-bordered w-full max-w-xs bg-white text-sm font-Inter text-darkGray" />
-  </div>
-  <form method="dialog" className="modal-backdrop">
-    <button>close</button>
-  </form>
-</dialog>
-<button className="btn mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red hover:from-blue hover:to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden transition duration-300 transform hover:rotate-6 border-none" onClick={()=>document.getElementById('my_modal_2').showModal()}>Custom Data.</button>
-<dialog id="my_modal_2" className="modal">
-  <div className="modal-box bg-white flex justify-center flex-col space-y-4">
-    <h3 className="font-semibold text-lg">Enter Data</h3>
-    <CMHComponent />
-  </div>
-  <form method="dialog" className="modal-backdrop">
-    <button>close</button>
-  </form>
-</dialog>
+
+  <button className="btn mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red hover:from-blue hover:to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden transition duration-300 transform hover:rotate-6 border-none" onClick={()=>document.getElementById('upload_modal').showModal()}>Upload Data.</button>
+
+  <dialog id="upload_modal" className="modal ">
+    <div className="modal-box bg-white flex justify-center flex-col font-Inter">
+      <h3 className="font-bold text-lg justify-center flex">Upload CSV.</h3>
+      <img className="object-cover" src="/images/examplecsv.png" alt="Sample Image"></img>
+      <p className="py-4 text-sm">Note: Please ensure your CSV is formatted like the example above.</p>
+      <input type="file" className="file-input file-input-grey file-input-bordered w-full max-w-xs bg-white text-sm font-Inter text-darkGray" />
+    </div>
+    <form method="dialog" className="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+
+  <button className="btn mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red hover:from-blue hover:to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden transition duration-300 transform hover:rotate-6 border-none" onClick={()=>document.getElementById('manual_entry_modal').showModal()}>Custom Data.</button>
+  
+  <dialog id="manual_entry_modal" className="modal">
+    <div className="modal-box bg-white flex justify-center flex-col space-y-4">
+
+      <h3 className="font-semibold text-lg">Enter Data</h3>
+
+      <CMHComponent />
+
+      <div className="flex justify-center">
+        <button onClick={save} className="mt-6 font-Inter font-medium relative bg-gradient-to-br from-parrot to-green text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden w-20">
+            <span className="absolute inset-0 bg-gradient-to-br from-parrot to-green"></span>
+            <span className="relative z-10 font-Inter font-medium text-black ">Save.</span>
+        </button>
+      </div>
+
+      <div className="flex justify-center items">
+          <button className="p-2 bg-blue rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-darkGray hover:scale-105">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+          </button>
+      </div>
+    </div>
+    <form method="dialog" className="modal-backdrop">
+      <button>close</button>
+    </form>
+
+  </dialog>
+
 </div>
 
 
