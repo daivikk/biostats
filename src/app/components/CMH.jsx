@@ -29,7 +29,6 @@ const CMHComponent = () => {
           <td contentEditable={true} className="p-2 text-sm font-reg text-darkGray">Element 8</td> {/* Additional cell */}
           <td contentEditable={true} className="p-2 text-sm font-reg text-darkGray">Element 9</td> {/* Additional cell */}
           <td contentEditable={true} className="p-2 text-sm font-reg text-darkGray">Element 10</td> {/* Additional cell */}
-
         </tr>
       </tbody>
     </table>
