@@ -19,9 +19,14 @@ module.exports = {
         darkGray: '#2B2B2B',
         parrot: '#D6FFD3',
         green: '#9FFFBF',
-        darkGreen: '#64AD67'
+        darkGreen: '#64AD67',
+        "grey": "oklch(var(--primary-muted) / <alpha-value>)",
       },
     },
+  },
+
+  daisyui:{
+    "--grey": "0 0% 94%",
   },
   plugins: [require("daisyui")],
 };

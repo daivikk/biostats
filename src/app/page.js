@@ -20,10 +20,23 @@ export default function Home() {
     </h1>
 
 <div className="flex justify-center flex-row space-x-4">
-  <button className="mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red hover:from-blue hover:to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden transition duration-300 transform hover:rotate-6">
+  {/* <button className="mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red hover:from-blue hover:to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden transition duration-300 transform hover:rotate-6">
     <span className="absolute inset-0 bg-gradient-to-br from-blue to-red"></span>
     <span className="relative z-10 font-Inter font-medium text-black">Upload Data.</span>
-  </button>
+  </button> */}
+  {/* Open the modal using document.getElementById('ID').showModal() method */}
+<button className="btn mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red hover:from-blue hover:to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden transition duration-300 transform hover:rotate-6 border-none" onClick={()=>document.getElementById('upload_modal').showModal()}>Upload Data.</button>
+<dialog id="upload_modal" className="modal ">
+  <div className="modal-box bg-white flex justify-center flex-col font-Inter">
+    <h3 className="font-bold text-lg justify-center flex">Upload CSV.</h3>
+    <img className="object-cover" src="/images/examplecsv.png" alt="Sample Image"></img>
+    <p className="py-4 text-sm">Note: Please ensure your CSV is formatted like the example above.</p>
+    <input type="file" className="file-input file-input-grey file-input-bordered w-full max-w-xs bg-white text-sm font-Inter text-darkGray" />
+  </div>
+  <form method="dialog" className="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
 <button className="btn mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red hover:from-blue hover:to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden transition duration-300 transform hover:rotate-6 border-none" onClick={()=>document.getElementById('my_modal_2').showModal()}>Custom Data.</button>
 <dialog id="my_modal_2" className="modal">
   <div className="modal-box bg-white flex justify-center flex-col space-y-4">
