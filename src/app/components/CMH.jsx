@@ -1,6 +1,13 @@
 "use client"
+import { useState, useEffect } from "react"
+
 
 const CMHComponent = (props) => {
+    const [columnTitle, setColumnTitle] = useState(props.table["columnTitles"][0]);
+
+    const handleInputChange = (event) => {
+      setColumnTitle(event.target.value);
+    };
 
     return(
     <>
@@ -8,7 +15,13 @@ const CMHComponent = (props) => {
       <tbody className="">
         <tr>
           <th className="border border-gray p-2 text-md font-Inter font-light text-darkGray">Trial {props.index + 1}</th> {/* Empty cell for the additional column */}
-          <th contentEditable={true} className="border border-gray p-2 text-md text-darkGray font-Inter font-semibold">{props.table["columnTitles"][0]}</th>
+          <th className="border border-gray p-2 text-md text-darkGray font-Inter font-semibold">
+            <input 
+                className="p-2 text-md text-darkGray font-Inter font-semibold bg-transparent z-10" 
+                value={columnTitle}
+                onChange={handleInputChange} // Add onChange event handler
+            />
+    </th>
           <th contentEditable={true} className="border border-gray p-2 text-md text-darkGray font-Inter font-semibold">{props.table["columnTitles"][1]}</th>
           {/* <th contentEditable={true} className="border border-black p-2 text-md font-Inter font-semibold">Total</th>  */}
         </tr>
