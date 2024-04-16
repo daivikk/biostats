@@ -20,13 +20,13 @@ export default function Home() {
 
   return (
    <>
-   <div class="flex justify-center items-center mt-2">
-      <nav class="w-3/4 bg-gray-200 rounded-3xl p-4 border border-gray">
+   <div className="flex justify-center items-center mt-2">
+      <nav className="w-3/4 bg-gray-200 rounded-3xl p-4 border border-gray">
         <ul className="flex justify-between font-Inter font-medium ml-32 mr-32">
           <li><a href="#" className="transform hover:rotate-6">Data Pools</a></li>
-          <li><a href="#" class="">Sandbox</a></li>
-          <li><a href="#" class="">Workflows</a></li>
-          <li><a href="#" class="">Figures</a></li>
+          <li><a href="#" className="">Sandbox</a></li>
+          <li><a href="#" className="">Workflows</a></li>
+          <li><a href="#" className="">Figures</a></li>
         </ul>
       </nav>
     </div>

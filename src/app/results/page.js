@@ -14,17 +14,17 @@ export default function resultsPage() {
           console.log(cellValues);
       }
     
-    const [data, setData] = useState([{columnTitles: ["Column Title", "Column Title"], rowTitles: ["Row Title", "Row Title"], counts: [0, 0, 0, 0]}])
+    const [data, setData] = useState([{columnTitles: ["Column Title", "Column Title"], rowTitles: ["Row Title", "Row Title"], counts: ["", "", "", ""]}])
 
     return ( 
     <>
-    <div class="flex justify-center items-center mt-2">
-       <nav class="w-3/4 bg-gray-200 rounded-3xl p-4 border border-gray">
+    <div className="flex justify-center items-center mt-2">
+       <nav className="w-3/4 bg-gray-200 rounded-3xl p-4 border border-gray">
          <ul className="flex justify-between font-Inter font-medium ml-32 mr-32">
            <li><a href="#" className="transform hover:rotate-6">Data Pools</a></li>
-           <li><a href="#" class="">Sandbox</a></li>
-           <li><a href="#" class="">Workflows</a></li>
-           <li><a href="#" class="">Figures</a></li>
+           <li><a href="#" className="">Sandbox</a></li>
+           <li><a href="#" className="">Workflows</a></li>
+           <li><a href="#" className="">Figures</a></li>
          </ul>
        </nav>
      </div>
@@ -58,7 +58,7 @@ export default function resultsPage() {
  
         {data.map((table, index) => {
           return(
-          <CMHComponent table={table} index={index} key={index} setData={setData} />
+          <CMHComponent data={data} table={table} index={index} key={index} setData={setData} />
           )
         })}
  
@@ -92,8 +92,8 @@ export default function resultsPage() {
   <button onClick={save} className="mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden w-[14rem] flex items-center">
     <span className="absolute inset-0 bg-gradient-to-br from-blue to-red"></span>
     <span className="relative z-10 font-Inter font-medium text-black flex items-center">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 mr-2">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
 </svg>
       Download Results.
     </span>
@@ -124,8 +124,8 @@ export default function resultsPage() {
  
    {/* <div className="mt-20 flex justify-center items-center mb-10">
    <button className="rounded-full bg-gray text-black hover:bg-gray-300 hover:text-gray-600 p-2 mr-4">
-   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" class="w-10 h-10 hover:scale-105">
-           <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="#000000" className="w-10 h-10 hover:scale-105">
+           <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
          </svg>
    </button>
    <div className="w-3/4 bg-white rounded-lg p-4 border border-gray">
@@ -142,9 +142,9 @@ export default function resultsPage() {
        </div>
      </div>
    </div>
-   <button class="rounded-full bg-gray text-black hover:bg-gray-300 hover:text-gray-600 p-2 ml-4">
-   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" class="w-10 h-10 hover:scale-105">
-         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+   <button className="rounded-full bg-gray text-black hover:bg-gray-300 hover:text-gray-600 p-2 ml-4">
+   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="#000000" className="w-10 h-10 hover:scale-105">
+         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
          </svg>
    </button>
  </div> */}
