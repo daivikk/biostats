@@ -14,7 +14,7 @@ export default function resultsPage() {
           console.log(cellValues);
       }
     
-      const [data, setData] = useState([[]])
+    const [data, setData] = useState([{columnTitles: ["Column Title", "Column Title"], rowTitles: ["Row Title", "Row Title"], counts: [0, 0, 0, 0]}])
 
     return ( 
     <>
@@ -22,7 +22,7 @@ export default function resultsPage() {
        <nav class="w-3/4 bg-gray-200 rounded-3xl p-4 border border-gray">
          <ul className="flex justify-between font-Inter font-medium ml-32 mr-32">
            <li><a href="#" className="transform hover:rotate-6">Data Pools</a></li>
-           <li><a href="#" class="">Playground</a></li>
+           <li><a href="#" class="">Sandbox</a></li>
            <li><a href="#" class="">Workflows</a></li>
            <li><a href="#" class="">Figures</a></li>
          </ul>
@@ -56,7 +56,11 @@ export default function resultsPage() {
  
        <h3 className="font-semibold text-lg">Enter Data</h3>
  
-       <CMHComponent />
+        {data.map((table, index) => {
+          return(
+          <CMHComponent table={table} index={index} key={index} setData={setData} />
+          )
+        })}
  
        <div className="flex justify-center">
          <button onClick={save} className="mt-6 font-Inter font-medium relative bg-gradient-to-br from-parrot to-green text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden w-20">
@@ -118,7 +122,7 @@ export default function resultsPage() {
  
  </div>
  
-   <div className="mt-20 flex justify-center items-center mb-10">
+   {/* <div className="mt-20 flex justify-center items-center mb-10">
    <button className="rounded-full bg-gray text-black hover:bg-gray-300 hover:text-gray-600 p-2 mr-4">
    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" class="w-10 h-10 hover:scale-105">
            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
@@ -143,7 +147,7 @@ export default function resultsPage() {
          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
          </svg>
    </button>
- </div>
+ </div> */}
     </>
     );
   }

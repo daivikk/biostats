@@ -24,7 +24,7 @@ export default function Home() {
       <nav class="w-3/4 bg-gray-200 rounded-3xl p-4 border border-gray">
         <ul className="flex justify-between font-Inter font-medium ml-32 mr-32">
           <li><a href="#" className="transform hover:rotate-6">Data Pools</a></li>
-          <li><a href="#" class="">Playground</a></li>
+          <li><a href="#" class="">Sandbox</a></li>
           <li><a href="#" class="">Workflows</a></li>
           <li><a href="#" class="">Figures</a></li>
         </ul>
@@ -39,8 +39,8 @@ export default function Home() {
 
   {/* <button className="btn mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red hover:from-blue hover:to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden transition duration-300 transform hover:rotate-6 border-none">Upload Data.</button> */}
   <Link href="/results" className="btn mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red hover:from-blue hover:to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden transition duration-300 transform hover:rotate-6 border-none">
-        Get Started.
-      </Link>
+    Get Started.
+  </Link>
 </div>
    </>
   );
