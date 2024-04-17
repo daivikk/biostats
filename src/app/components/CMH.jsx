@@ -40,7 +40,7 @@ const CMHComponent = (props) => {
 
     return(
     <>
-    <table className="border-collapse">
+    <table className="border-collapse w-full">
       <tbody className="">
         <tr>
           <th className="border border-gray p-2 text-md font-Inter font-light text-darkGray">Trial {props.index + 1}</th>

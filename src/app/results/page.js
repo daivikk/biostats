@@ -122,7 +122,7 @@ export default function resultsPage() {
    <button className="btn mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red hover:from-blue hover:to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden transition duration-300 transform hover:rotate-6 border-none" onClick={()=>document.getElementById('manual_entry_modal').showModal()}>Custom Data.</button>
    
    <dialog id="manual_entry_modal" className="modal">
-     <div className="modal-box bg-white flex-col space-y-4 max-w-[48rem] max-h-** overflow-y-scroll">
+     <div className="modal-box bg-white flex-col space-y-4 max-w-[55rem] max-h-** overflow-y-scroll">
  
        <h3 className="font-semibold text-lg flex justify-center">Enter Data</h3>
  
