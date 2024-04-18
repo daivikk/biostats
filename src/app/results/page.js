@@ -3,7 +3,7 @@ import CMHComponent from "../components/CMH";
 import { useState, useEffect } from "react"
 
 
-export default function resultsPage() {
+export default function ResultsPage() {
     
     const [data, setData] = useState([{columnTitles: ["Outcome 1", "Outcome 2"], rowTitles: ["Treatment 1", "Treatment 2"], counts: ["", "", "", ""]}])
 
