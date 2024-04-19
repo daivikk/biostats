@@ -1,13 +1,15 @@
 "use client"
 import CMHComponent from "../components/CMH";
 import { useState, useEffect } from "react"
-
+import { CSVLink } from "react-csv";
 
 export default function ResultsPage() {
     
     const [data, setData] = useState([{columnTitles: ["Outcome 1", "Outcome 2"], rowTitles: ["Treatment 1", "Treatment 2"], counts: ["", "", "", ""]}])
 
     const [results, setResults] = useState([])
+
+    const [csvData, setCsvData] = useState([])
 
     const addTable = (e) => {
       setData([...data, {columnTitles: ["Outcome 1", "Outcome 2"], rowTitles: ["Treatment 1", "Treatment 2"], counts: ["", "", "", ""]}]);
@@ -34,8 +36,8 @@ export default function ResultsPage() {
 
         const res = await response.json()
         if (response.ok) {
-          console.log(res);
           setResults([res.oddsRatio, res.cmhStatistic, res.pValue])
+          setCsvData(res.csvData)
           // window.location.reload()
         } else {
           console.error('Upload failed');
@@ -61,8 +63,8 @@ export default function ResultsPage() {
 
         const res = await response.json()
         if (response.ok) {
-          console.log(res);
           setResults([res.oddsRatio, res.cmhStatistic, res.pValue])
+          setCsvData(res.csvData)
           // window.location.reload()
         } else {
           console.error('Upload failed');
@@ -102,7 +104,7 @@ export default function ResultsPage() {
      <div className="modal-box bg-white flex justify-center flex-col font-Inter">
        <h3 className="font-bold text-lg justify-center flex">Upload CSV.</h3>
        <img className="object-cover" src="/images/examplecsv.png" alt="Sample Image"></img>
-       <p className="py-4 text-sm">Note: Please ensure your CSV is formatted like the example above.</p>
+       <p className="py-4 text-sm">Note: Please ensure your CSV is formatted like the example above. Any number of trials is accepted.</p>
        <input type="file" id="csvFile" className="file-input file-input-grey file-input-bordered w-full max-w-xs bg-white text-sm font-Inter text-darkGray" />
        
        <button onClick={calculateCSV} className="mt-6 font-Inter font-medium relative bg-gradient-to-br from-parrot to-green text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden w-30">
@@ -169,8 +171,22 @@ export default function ResultsPage() {
         <p className="py-4 text-lg ml-auto font-Inter font-bold bg-gradient-to-r from-blue to-red text-transparent bg-clip-text inline-block rounded-lg px-4 shadow-md">{results[2]}</p>
       </div>
       <div className="flex justify-center">
-  
-  <button onClick={downloadCSV} className="mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden w-[14rem] flex items-center">
+      <CSVLink
+        data={csvData}
+        filename={"CMH-results.csv"}
+        className="mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden w-[14rem] flex items-center"
+        target="_blank"
+        >
+        <span className="absolute inset-0 bg-gradient-to-br from-blue to-red"></span>
+        <span className="relative z-10 font-Inter font-medium text-black flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 mr-2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+          </svg>
+            Download Results.
+        </span>
+    </CSVLink>
+
+  {/* <button onClick={downloadCSV} className="mt-6 font-Inter font-medium relative bg-gradient-to-br from-blue to-red text-darkGray font-bold py-2 px-4 rounded-[8px] overflow-hidden w-[14rem] flex items-center">
     <span className="absolute inset-0 bg-gradient-to-br from-blue to-red"></span>
     <span className="relative z-10 font-Inter font-medium text-black flex items-center">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 mr-2">
@@ -178,7 +194,7 @@ export default function ResultsPage() {
       </svg>
         Download Results.
     </span>
-  </button>
+  </button> */}
 </div>
      </div>
      <form method="dialog" className="modal-backdrop">

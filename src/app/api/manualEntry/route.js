@@ -37,8 +37,34 @@ export async function POST(request) {
     const cmhStatistic = ((cmhNumerator) ** 2) / cmhDenominator // SHOULD WE DO 0.5 shift
     const oddsRatio = orNumerator / orDenominator
     const pVal = 1 - jStat.chisquare.cdf(cmhStatistic, 1);
+
+    let csvData = [["Trial", "Treatment", "Outcome", "Count"]]
+
+    for(var i = 0; i < data.length; i++){
+        for(var j = 0; j < 4; j++){
+            csvData.push(["Trial " + (i+1), data[0]["rowTitles"][Math.floor(j/2)], data[0]["columnTitles"][j % 2], Number(data[i]["counts"][j])])
+        }
+    }
+
+    csvData[0].push("CMH Results\r")
+    csvData[2].push("Odds Ratio: " + parseFloat(oddsRatio.toFixed(4)) + "\r")
+    csvData[3].push("CMH Statistic: " + parseFloat(cmhStatistic.toFixed(4)) + "\r")
+    csvData[4].push("p-value: " + parseFloat(pVal.toFixed(4)) + "\r")
+
+    let indices = [0, 2, 3, 4]
+    csvData.map((value, index) => indices.includes(index) ? {} : value += "\r")
+
+    for(let i = 0; i < csvData.length; i++){
+        let arr = csvData[i]
+        for(let j = 0; j < arr.length; j++){
+            if(typeof arr[j] == "string"){
+                arr[j] = arr[j].replaceAll('"', '')
+            }
+        }
+        csvData[i] = arr
+    }
     
-    return NextResponse.json({ oddsRatio: parseFloat(oddsRatio.toFixed(4)), cmhStatistic: parseFloat(cmhStatistic.toFixed(4)), pValue: parseFloat(pVal.toFixed(4)), status: 201 });
+    return NextResponse.json({ oddsRatio: parseFloat(oddsRatio.toFixed(4)), cmhStatistic: parseFloat(cmhStatistic.toFixed(4)), pValue: parseFloat(pVal.toFixed(4)), csvData: csvData, status: 201 });
   } catch (error) {
     console.log("Error occured ", error);
     return NextResponse.json({ Message: "Failed", status: 500 });
