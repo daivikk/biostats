@@ -70,15 +70,15 @@ export async function POST(request) {
     if(csvData[0][csvData[0].length - 1] != "CMH Results"){
 
         csvData[0].push("CMH Results\r")
-        csvData[2].push("Odds Ratio: " + parseFloat(oddsRatio.toFixed(4)) + "\r")
-        csvData[3].push("CMH Statistic: " + parseFloat(cmhStatistic.toFixed(4)) + "\r")
-        csvData[4].push("p-value: " + parseFloat(pVal.toFixed(4)) + "\r")
+        csvData[2].push("Odds Ratio: " + Number.parseFloat(oddsRatio).toExponential(8) + "\r")
+        csvData[3].push("CMH Statistic: " + Number.parseFloat(cmhStatistic).toExponential(8) + "\r")
+        csvData[4].push("p-value: " + Number.parseFloat(pVal).toExponential(8) + "\r")
         indices = [0, 2, 3, 4]
     }
     else{
-        csvData[2][4] = "Odds Ratio: " + parseFloat(oddsRatio.toFixed(4)) + "\r"
-        csvData[3][4] = "CMH Statistic: " + parseFloat(cmhStatistic.toFixed(4)) + "\r"
-        csvData[4][4] = "p-value: " + parseFloat(pVal.toFixed(4)) + "\r"
+        csvData[2][4] = "Odds Ratio: " + Number.parseFloat(oddsRatio).toExponential(8) + "\r"
+        csvData[3][4] = "CMH Statistic: " + Number.parseFloat(cmhStatistic).toExponential(8) + "\r"
+        csvData[4][4] = "p-value: " + Number.parseFloat(pVal).toExponential(8) + "\r"
     }
 
     csvData.map((value, index) => indices.includes(index) ? {} : value += "\r")
@@ -92,7 +92,7 @@ export async function POST(request) {
         csvData[i] = arr
     }
     
-    return NextResponse.json({ oddsRatio: parseFloat(oddsRatio.toFixed(4)), cmhStatistic: parseFloat(cmhStatistic.toFixed(4)), pValue: parseFloat(pVal.toFixed(4)), csvData: csvData, status: 201 });
+    return NextResponse.json({ oddsRatio: Number.parseFloat(oddsRatio).toExponential(8), cmhStatistic: Number.parseFloat(cmhStatistic).toExponential(8), pValue: Number.parseFloat(pVal).toExponential(8), csvData: csvData, status: 201 });
   } catch (error) {
     console.log("Error occured ", error);
     return NextResponse.json({ Message: "Failed", status: 500 });
